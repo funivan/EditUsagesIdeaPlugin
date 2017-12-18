@@ -31,13 +31,13 @@
     <actions>
         <!-- Add your actions here -->
         <action id="CreatePatchFromUsages"
-                class="com.funivan.idea.editUsages.CreateCustomPatchFromUsages"
+                class="com.funivan.idea.editUsages.CreateCustomPatchAction"
                 text="Create custom patch" description="Export Usages to custom patch"
                 icon="Icons.EDIT_USAGES_CREATE_PATCH">
             <add-to-group group-id="UsageView.Popup"/>
         </action>
 
-        <action id="ApplyCustomPatch" class="com.funivan.idea.editUsages.ApplyCustomPatch"
+        <action id="ApplyCustomPatch" class="com.funivan.idea.editUsages.ApplyCustomPatchAction"
                 text="Apply custom patch" description="Apply custom patch file">
         </action>
 

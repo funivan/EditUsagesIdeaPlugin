@@ -7,6 +7,7 @@ import javax.swing.*;
 /**
  * @author Ivan Shcherbak <dev@funivan.com>
  */
+@SuppressWarnings("unused")
 public class Icons {
     public static final Icon EDIT_USAGES_CREATE_PATCH = EditUsagesIcons.CREATE_PATCH;
 }
