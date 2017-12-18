@@ -1,10 +1,10 @@
 package com.funivan.idea.editUsages.structures
 
 import com.intellij.openapi.editor.Document
-import java.util.*
+import java.util.ArrayList
 
 /**
- * @author Ivan Shcherbak dev@funivan.com
+ * @author Ivan Shcherbak alotofall@gmail.com
  */
 class DocumentNewLines(val document: Document) {
     val replaces = ArrayList<ReplaceStructure>()

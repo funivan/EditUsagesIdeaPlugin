@@ -21,7 +21,7 @@ import java.util.regex.Pattern
 
 @Suppress("NAME_SHADOWING")
 /**
- * @author Ivan Shcherbak dev@funivan.com
+ * @author Ivan Shcherbak alotofall@gmail.com
  */
 class ApplyCustomPatchAction : AnAction() {
 

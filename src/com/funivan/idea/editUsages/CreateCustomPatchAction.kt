@@ -17,7 +17,7 @@ import com.intellij.usages.impl.UsageViewImpl
 import java.util.*
 
 /**
- * @author Ivan Shcherbak dev@funivan.com
+ * @author Ivan Shcherbak alotofall@gmail.com
  */
 class CreateCustomPatchAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {

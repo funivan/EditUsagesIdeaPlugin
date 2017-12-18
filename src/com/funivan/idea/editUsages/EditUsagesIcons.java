@@ -4,7 +4,7 @@ import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 /**
- * @author Ivan Shcherbak <dev@funivan.com>
+ * @author Ivan Shcherbak alotofall@gmail.com
  */
 public class EditUsagesIcons {
 

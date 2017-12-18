@@ -5,7 +5,7 @@ import com.funivan.idea.editUsages.EditUsagesIcons;
 import javax.swing.*;
 
 /**
- * @author Ivan Shcherbak <dev@funivan.com>
+ * @author Ivan Shcherbak alotofall@gmail.com
  */
 @SuppressWarnings("unused")
 public class Icons {
