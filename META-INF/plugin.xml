@@ -1,0 +1,46 @@
+<idea-plugin>
+    <id>com.funivan.idea.editUsages</id>
+    <name>EditUsages</name>
+    <version>0.0.1</version>
+    <vendor email="dev@funivan.com" url="http://funivan.com">Funivan</vendor>
+
+    <description><![CDATA[
+        Find some statements with IDEA and edit it in pleasent way.<br>
+        Twitter: <a href="http://twitter.com/funivan">@funivan</a>
+    ]]></description>
+
+    <change-notes><![CDATA[  ]]>
+    </change-notes>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="CreatePatchFromUsages"
+                class="com.funivan.idea.editUsages.CreateCustomPatchFromUsages"
+                text="Create custom patch" description="Export Usages to custom patch"
+                icon="Icons.EDIT_USAGES_CREATE_PATCH">
+            <add-to-group group-id="UsageView.Popup"/>
+        </action>
+
+        <action id="ApplyCustomPatch" class="com.funivan.idea.editUsages.ApplyCustomPatch"
+                text="Apply custom patch" description="Apply custom patch file">
+        </action>
+
+    </actions>
+
+</idea-plugin>
