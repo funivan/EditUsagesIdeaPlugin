@@ -2,15 +2,14 @@
     <id>com.funivan.idea.editUsages</id>
     <name>EditUsages</name>
     <version>0.0.1</version>
-    <vendor email="dev@funivan.com" url="http://funivan.com">Funivan</vendor>
+    <vendor email="dev@funivan.com" url="http://funivan.com">Ivan Shcherbak</vendor>
 
     <description><![CDATA[
-        Find some statements with IDEA and edit it in pleasent way.<br>
+        Find some statements with IDEA and edit it in pleasant way.<br>
         Twitter: <a href="http://twitter.com/funivan">@funivan</a>
     ]]></description>
 
-    <change-notes><![CDATA[  ]]>
-    </change-notes>
+    <change-notes><![CDATA[  ]]></change-notes>
 
     <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="131"/>
@@ -32,13 +31,16 @@
         <!-- Add your actions here -->
         <action id="CreatePatchFromUsages"
                 class="com.funivan.idea.editUsages.CreateCustomPatchAction"
-                text="Create custom patch" description="Export Usages to custom patch"
+                text="Create custom patch"
+                description="Export Usages to custom patch"
                 icon="Icons.EDIT_USAGES_CREATE_PATCH">
             <add-to-group group-id="UsageView.Popup"/>
         </action>
 
-        <action id="ApplyCustomPatch" class="com.funivan.idea.editUsages.ApplyCustomPatchAction"
-                text="Apply custom patch" description="Apply custom patch file">
+        <action id="ApplyCustomPatch"
+                class="com.funivan.idea.editUsages.ApplyCustomPatchAction"
+                text="Apply custom patch"
+                description="Apply custom patch file">
         </action>
 
     </actions>
