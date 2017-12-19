@@ -24,10 +24,13 @@ class CreateCustomPatchAction : AnAction() {
         val project = e.project
         if (project != null) {
             val dataContext = e.dataContext
-            val usageView = UsageView.USAGE_VIEW_KEY.getData(dataContext) as? UsageViewImpl ?: return
-            var usages = usageView.selectedUsages
+            val usageViewImpl = UsageView.USAGE_VIEW_KEY.getData(dataContext) as? UsageViewImpl
+            if (usageViewImpl === null) {
+                return
+            }
+            var usages = usageViewImpl.selectedUsages
             if (usages.size == 0) {
-                usages = usageView.usages
+                usages = usageViewImpl.usages
             }
             val baseDir = project.baseDir
             val buffer = StringBuilder()
@@ -42,22 +45,25 @@ class CreateCustomPatchAction : AnAction() {
                         val file = usage.file
                         val line = usage.line
                         val key = file.path + ":" + line
-                        if (processedLines[key] != null) {
-                            continue
+                        if (processedLines[key] == null) {
+                            if (language == null) {
+                                language = usage.element.language
+                            }
+                            val document = FileDocumentManager.getInstance().getDocument(file)
+                            if (document != null) {
+                                val startOffset = document.getLineStartOffset(line)
+                                val endOffset = document.getLineEndOffset(line)
+                                val text = document.getText(TextRange(startOffset, endOffset))
+                                buffer.append("\n")
+                                buffer.append("//file:")
+                                        .append(VfsUtil.getRelativePath(file, baseDir, '/'))
+                                        .append(':').append(line + 1)
+                                        .append("\n")
+                                buffer.append(text).append("\n")
+                                buffer.append("\n")
+                                processedLines.put(key, true)
+                            }
                         }
-                        language = usage.element.language
-                        val fileDocument = FileDocumentManager.getInstance().getDocument(file) ?: continue
-                        val startOffset = fileDocument.getLineStartOffset(line)
-                        val endOffset = fileDocument.getLineEndOffset(line)
-                        val text = fileDocument.getText(TextRange(startOffset, endOffset))
-                        buffer.append("\n")
-                        buffer.append("//file:")
-                                .append(VfsUtil.getRelativePath(file, baseDir, '/'))
-                                .append(':').append(line + 1)
-                                .append("\n")
-                        buffer.append(text).append("\n")
-                        buffer.append("\n")
-                        processedLines.put(key, true)
                     }
                     val scratchFile = ScratchRootType.getInstance()
                             .createScratchFile(
