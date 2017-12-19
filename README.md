@@ -16,5 +16,6 @@ It is very fast and simple way to edit your code.
 
 ## Demo
 ![demo](doc/demo.gif)
+
 For better performance set hotkeys for two actions: `Create custom patch` and `Apply custom patch`.
 
