@@ -1,10 +1,8 @@
 # Edit Usages
 
 ## Why?
-Find usages is one of the most powerful features in PhpStorm. You can export all usages to the file, edit it and apply changes to all files with the help of this plugin.
-How I do it: find usages (for example I find some method call), `create custom patch`, edit this patch (with multiple cursors, multiple selections, etc), then I just apply these changes with action `apply custom patch`.
-It is very fast and simple way to edit your code.
-
+Find usages is one of the most powerful features in the Intellij Platform.
+You can export all usages to the file, edit it and apply changes to all files with the help of this plugin.
 
 ## How to use?
 1. Run `find usages`.
