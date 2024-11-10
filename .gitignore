@@ -3,3 +3,6 @@ out/
 lib/
 EditUsagesIdeaPlugin.jar
 EditUsagesIdeaPlugin.zip
+.gradle/
+build/
+.idea/
