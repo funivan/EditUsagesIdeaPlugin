@@ -2,11 +2,11 @@
     <id>com.funivan.idea.editUsages</id>
     <name>EditUsages</name>
     <version>0.0.1</version>
-    <vendor email="dev@funivan.com" url="http://funivan.com">Ivan Shcherbak</vendor>
+    <vendor email="alotofall@gmail.com" url="http://funivan.com">Ivan Shcherbak</vendor>
 
     <description><![CDATA[
         Find some statements with IDEA and edit it in pleasant way.<br>
-        Twitter: <a href="http://twitter.com/funivan">@funivan</a>
+        Twitter: <a href="http://x.com/funivan">@funivan</a>
     ]]></description>
 
     <change-notes><![CDATA[  ]]></change-notes>
@@ -18,14 +18,6 @@
     <extensions defaultExtensionNs="com.intellij">
 
     </extensions>
-
-    <application-components>
-        <!-- Add your application components here -->
-    </application-components>
-
-    <project-components>
-        <!-- Add your project components here -->
-    </project-components>
 
     <actions>
         <!-- Add your actions here -->

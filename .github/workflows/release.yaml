@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  release:
+    name: Release plugin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 17
+      - name: Save plugin version and type to ENV
+        run: |
+          echo "PLUGIN_VERSION=$(echo ${GITHUB_REF:10})" >> $GITHUB_ENV
+          echo "PLUGIN_CHANNEL=$(echo "${GITHUB_REF}" | grep -oE "[^-]+$" | grep -oE "^[a-z]+$")" >> $GITHUB_ENV
+      - name: Configure Gradle environment variables
+        run: |
+          echo "ORG_GRADLE_PROJECT_pluginVersion=$(echo "${PLUGIN_VERSION}")" >> $GITHUB_ENV
+          echo "ORG_GRADLE_PROJECT_intellijPublishToken=${{ secrets.intellijPublishToken }}" >> $GITHUB_ENV
+          echo "ORG_GRADLE_PROJECT_intellijPublishChannel=$(echo "${PLUGIN_CHANNEL}")" >> $GITHUB_ENV
+      - name: Print environment variables
+        run: |
+          echo "PLUGIN_VERSION=$PLUGIN_VERSION"
+          echo "PLUGIN_CHANNEL=$PLUGIN_CHANNEL"
+          echo "ORG_GRADLE_PROJECT_pluginVersion=$ORG_GRADLE_PROJECT_version"
+          echo "ORG_GRADLE_PROJECT_intellijPublishToken=$ORG_GRADLE_PROJECT_intellijPublishToken"
+          echo "ORG_GRADLE_PROJECT_intellijPublishChannel=$ORG_GRADLE_PROJECT_intellijPublishChannel"
+
+      - name: Publish plugin to JB [STABLE]
+        uses: burrunan/gradle-cache-action@v1.5
+        if: ${{ env.PLUGIN_CHANNEL == '' }}
+        with:
+          arguments: publishPlugin
+
+      - name: Publishplugin to JB [ALPHA]
+        uses: burrunan/gradle-cache-action@v1.5
+        if: ${{ env.PLUGIN_CHANNEL == 'alpha' }}
+        with:
+          arguments: publishPlugin
+
+      - name: Build Nightly version
+        uses: burrunan/gradle-cache-action@v1.5
+        if: ${{ env.PLUGIN_CHANNEL == 'nightly' }}
+        with:
+          arguments: buildPlugin
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          file: build/libs/*
+          file_glob: true
